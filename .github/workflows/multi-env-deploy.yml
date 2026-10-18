@@ -1,0 +1,20 @@
+name: multi-env-deploy
+
+on:
+  workflow_dispatch:
+    inputs:
+      environment:
+        required: true
+        default: dev
+        type: choice
+        options:
+          - dev
+          - staging
+          - prod
+
+jobs:
+  multi-env:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Print Environment
+        run: echo "${{ inputs.environment }}"
